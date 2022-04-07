@@ -59,7 +59,7 @@ done
 
 
 
-
+# Compute mean FA per streamline over the full 3 bundles together
 tcksample tracto/prob_bundles.tck \
   fa_post_eddy.nii.gz \
   connectome_example/prob_bundle_meanFA.txt \
@@ -79,7 +79,8 @@ cat connectome_example/connectome_tractcount_wrong.csv
 tck2connectome tracto/prob_bundles.tck \
   connectome_example/labels.nii.gz \
   connectome_example/connectome_tractcount_backtrack.csv \
-  -assignment_reverse_search 10000 \
+  -assignment_reverse_search 0 \
+  -force
 
 cat connectome_example/connectome_tractcount_backtrack.csv
 
@@ -89,9 +90,10 @@ cat connectome_example/connectome_tractcount_backtrack.csv
 tck2connectome tracto/prob_bundles.tck \
   connectome_example/labels.nii.gz \
   connectome_example/connectome_meanFA.csv \
-  -assignment_reverse_search 10000 \
+  -assignment_reverse_search 0 \
   -scale_file connectome_example/prob_bundle_meanFA.txt \
-  -stat_edge mean
+  -stat_edge mean \
+  -force
 
 cat connectome_example/connectome_meanFA.csv
 
